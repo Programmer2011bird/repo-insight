@@ -2,8 +2,11 @@
 
 ### Features
 - [ ] Search For Repos
+- * [ ] Get Insights For Repos in The Search
 - [ ] Search For User
 - [ ] Get Insights For A Repo
+
+### Insights
 - * [ ] Get Full Name
 - * [ ] Get LICENSEs
 - * [ ] Get URL

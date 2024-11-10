@@ -11,12 +11,12 @@
 - [ ] Get Insights For A Repo
 
 ### Insights
-- * [ ] Get Full Name
-- * [ ] Get LICENSEs
-- * [ ] Get URL
-- * [ ] Get Clone URL
-- * [ ] Get Languages
-- * [ ] Get Numbers Of Stars
-- * [ ] Get Numbers Of Forks
-- * [ ] Get Numbers Of Watchers
-- * [ ] Get Description
+- * [x] Get Full Name
+- * [x] Get LICENSEs
+- * [x] Get URL
+- * [x] Get Clone URL
+- * [x] Get Languages
+- * [x] Get Numbers Of Stars
+- * [x] Get Numbers Of Forks
+- * [x] Get Numbers Of Watchers
+- * [x] Get Description

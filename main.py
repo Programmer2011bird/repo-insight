@@ -37,18 +37,39 @@ class API_HANDLER:
         
     def getInfo(self, owner: str, repoName: str):
         self.ENDPOINT: str = f"{self.URL}/repos/{owner}/{repoName}"
-        #"fullName" : "",
-        #"license" : "",
-        #"htmlUrl" : "",
-        #"cloneUrl" : "",
-        #"language" : "",
-        #"forkCounts" : "",
-        #"stars" : "",
-        #"watchers" : "",
-        #"description" : ""
+        self.RESPONSE: requests.Response = requests.get(self.ENDPOINT)
+        self.JSON_RESPONSE: dict = dict(self.RESPONSE.json())
+
+        try:
+            self.INSIGHTS: dict[str, str] = {
+                "fullName" : self.JSON_RESPONSE["full_name"],
+                "license" : self.JSON_RESPONSE["license"]["name"],
+                "htmlUrl" : self.JSON_RESPONSE["html_url"],
+                "cloneUrl" : self.JSON_RESPONSE["clone_url"],
+                "language" : self.JSON_RESPONSE["language"],
+                "forkCounts" : self.JSON_RESPONSE["forks_count"],
+                "stars" : self.JSON_RESPONSE["stargazers_count"],
+                "watchers" : self.JSON_RESPONSE["watchers_count"],
+                "description" : self.JSON_RESPONSE["description"]
+            }
+        
+        except TypeError or KeyError:
+            self.INSIGHTS: dict[str, str] = {
+                "fullName" : self.JSON_RESPONSE["full_name"],
+                "license" : "null",
+                "htmlUrl" : self.JSON_RESPONSE["html_url"],
+                "cloneUrl" : self.JSON_RESPONSE["clone_url"],
+                "language" : self.JSON_RESPONSE["language"],
+                "forkCounts" : self.JSON_RESPONSE["forks_count"],
+                "stars" : self.JSON_RESPONSE["stargazers_count"],
+                "watchers" : self.JSON_RESPONSE["watchers_count"],
+                "description" : self.JSON_RESPONSE["description"]
+            }
+
+        return self.INSIGHTS
 
 
 if __name__ == "__main__":
     API: API_HANDLER = API_HANDLER()
-    print(API.searchUser("Programmer2011bird"))
+    print(API.getInfo("Programmer2011bird", "Programmer2011bird"))
 

@@ -4,6 +4,10 @@
 - [x] Search For Repos
 - * [ ] Get Insights For Repos in The Search
 - [ ] Search For User
+- * [ ] Get Html Url
+- * [ ] Get Score
+- * [ ] Get Repositories Insights
+- * [ ] Get Number of Repositories
 - [ ] Get Insights For A Repo
 
 ### Insights

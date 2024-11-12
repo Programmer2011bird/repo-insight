@@ -11,9 +11,13 @@ class API_HANDLER:
         self.JSON_RESPONSE: dict = dict(self.RESPONSE.json())
         
         self.USEFULL_INFO: dict[int, dict[str, str]] = {}
-        # TODO : set this up to return insights on the dict ( after implementing getInfo function)
-        # for index, item in enumerate(self.JSON_RESPONSE["items"]):
-            # self.USEFULL_INFO.update({str(index) : item["full_name"]})
+        
+        for index, item in enumerate(self.JSON_RESPONSE["items"]):
+            fullName: list[str] = str(item["full_name"]).split("/")
+            Owner: str = fullName[0]
+            Repo: str = fullName[1]
+            
+            self.USEFULL_INFO.update({index : self.getInfo(Owner, Repo)})
 
         return self.USEFULL_INFO
 
@@ -32,6 +36,7 @@ class API_HANDLER:
                 "reposUrl" : item["repos_url"],
                 "reposCount" : str(len(requests.get(item["repos_url"]).json()))
             }
+
 
         return self.USEFULL_INFO
         
@@ -71,5 +76,5 @@ class API_HANDLER:
 
 if __name__ == "__main__":
     API: API_HANDLER = API_HANDLER()
-    print(API.getInfo("Programmer2011bird", "Programmer2011bird"))
+    print(API.searchRepo("Neovim"))
 

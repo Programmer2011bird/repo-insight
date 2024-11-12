@@ -2,13 +2,13 @@
 
 ### Features
 - [x] Search For Repos
-- * [ ] Get Insights For Repos in The Search
+- * [x] Get Insights For Repos in The Search
 - [x] Search For User
 - * [x] Get Html Url
 - * [x] Get Score
 - * [ ] Get Repositories Insights
 - * [x] Get Number of Repositories
-- [ ] Get Insights For A Repo
+- [x] Get Insights For A Repo
 
 ### Insights
 - * [x] Get Full Name

@@ -27,7 +27,6 @@ class API_HANDLER:
         self.JSON_RESPONSE: dict = dict(self.RESPONSE.json())
         
         self.USEFULL_INFO: dict[int, dict[str, str]] = {}
-        # TODO : set this up to return insights on the dict ( after implementing getInfo function)
 
         for index, item in enumerate(self.JSON_RESPONSE["items"]):
             self.USEFULL_INFO[index] = {
@@ -76,5 +75,5 @@ class API_HANDLER:
 
 if __name__ == "__main__":
     API: API_HANDLER = API_HANDLER()
-    print(API.searchRepo("Neovim"))
+    print(API.getInfo("Neovim", "neovim"))
 

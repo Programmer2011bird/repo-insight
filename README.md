@@ -6,7 +6,6 @@
 - [x] Search For User
 - * [x] Get Html Url
 - * [x] Get Score
-- * [ ] Get Repositories Insights
 - * [x] Get Number of Repositories
 - [x] Get Insights For A Repo
 

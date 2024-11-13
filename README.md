@@ -19,3 +19,8 @@
 - * [x] Get Numbers Of Forks
 - * [x] Get Numbers Of Watchers
 - * [x] Get Description
+
+### Other Stuff
+- [ ] Repo Search Formatting
+- [ ] User Search Formatting
+- [ ] Insights Formatting

@@ -38,8 +38,8 @@ class API_HANDLER:
 
 
         return self.USEFULL_INFO
-        
-    def getInfo(self, owner: str, repoName: str):
+
+    def getInfo(self, owner: str, repoName: str) -> dict[str, str]:
         self.ENDPOINT: str = f"{self.URL}/repos/{owner}/{repoName}"
         self.RESPONSE: requests.Response = requests.get(self.ENDPOINT)
         self.JSON_RESPONSE: dict = dict(self.RESPONSE.json())
@@ -71,9 +71,3 @@ class API_HANDLER:
             }
 
         return self.INSIGHTS
-
-
-if __name__ == "__main__":
-    API: API_HANDLER = API_HANDLER()
-    print(API.getInfo("Neovim", "neovim"))
-

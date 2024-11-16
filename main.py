@@ -13,11 +13,34 @@ class API_HANDLER:
         self.USEFULL_INFO: dict[int, dict[str, str]] = {}
         
         for index, item in enumerate(self.JSON_RESPONSE["items"]):
-            fullName: list[str] = str(item["full_name"]).split("/")
-            Owner: str = fullName[0]
-            Repo: str = fullName[1]
             
-            self.USEFULL_INFO.update({index : self.getInfo(Owner, Repo)})
+            try:
+                self.INSIGHTS: dict[str, str] = {
+                    "fullName" : item["full_name"],
+                    "license" : item["license"]["name"],
+                    "htmlUrl" : item["html_url"],
+                    "cloneUrl" : item["clone_url"],
+                    "language" : item["language"],
+                    "forkCounts" : item["forks_count"],
+                    "stars" : item["stargazers_count"],
+                    "watchers" : item["watchers_count"],
+                    "description" : item["description"]
+                }
+
+            except TypeError or KeyError:
+                self.INSIGHTS: dict[str, str] = {
+                    "fullName" : item["full_name"],
+                    "license" : "null",
+                    "htmlUrl" : item["html_url"],
+                    "cloneUrl" : item["clone_url"],
+                    "language" : item["language"],
+                    "forkCounts" : item["forks_count"],
+                    "stars" : item["stargazers_count"],
+                    "watchers" : item["watchers_count"],
+                    "description" : item["description"]
+                }
+
+            self.USEFULL_INFO.update({index : self.INSIGHTS})
 
         return self.USEFULL_INFO
 
@@ -43,6 +66,8 @@ class API_HANDLER:
         self.ENDPOINT: str = f"{self.URL}/repos/{owner}/{repoName}"
         self.RESPONSE: requests.Response = requests.get(self.ENDPOINT)
         self.JSON_RESPONSE: dict = dict(self.RESPONSE.json())
+
+        print(self.JSON_RESPONSE)
 
         try:
             self.INSIGHTS: dict[str, str] = {

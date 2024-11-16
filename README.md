@@ -21,6 +21,6 @@
 - * [x] Get Description
 
 ### Other Stuff
-- [ ] Repo Search Formatting
+- [x] Repo Search Formatting
 - [ ] User Search Formatting
-- [ ] Insights Formatting
+- [x] Insights Formatting

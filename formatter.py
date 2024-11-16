@@ -6,11 +6,18 @@ class Formatter:
     def __init__(self) -> None:
         pass
 
-    def userSearchFormatter(self):
-        pass
+    def userSearchFormatter(self, JSON_DICT: dict):
+        for index in range(len(JSON_DICT)):
+            print(f"{'-'*25} {index} {'-'*25}")
+            self.OUTPUT_STR: str = f"""
+Html Url : {JSON_DICT[index]["htmlUrl"]}
+Score : {JSON_DICT[index]["score"]}
+Repos Url : {JSON_DICT[index]["reposUrl"]}
+Repos Count : {JSON_DICT[index]["reposCount"]}
+            """
+            print(self.OUTPUT_STR)
 
     def repoSearchFormatter(self, JSON_DICT: dict):
-        print(JSON_DICT)
         for index in range(len(JSON_DICT)):
             print(f"{'-'*25} {index} {'-'*25}")
             self.infoFormatter(JSON_DICT[index])
@@ -28,12 +35,3 @@ Watchers : {JSON_DICT["watchers"]}
 Description : {JSON_DICT["description"]}
 """
         print(self.OUTPUT_STR)
-
-
-if __name__ == "__main__":
-    formatter: Formatter = Formatter()
-    API: main.API_HANDLER = main.API_HANDLER()
-    
-    JSON_OUTPUT: dict = API.searchRepo("neovim")
-    # formatter.infoFormatter(JSON_OUTPUT)
-    formatter.repoSearchFormatter(JSON_OUTPUT)

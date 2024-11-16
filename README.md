@@ -22,5 +22,5 @@
 
 ### Other Stuff
 - [x] Repo Search Formatting
-- [ ] User Search Formatting
+- [x] User Search Formatting
 - [x] Insights Formatting

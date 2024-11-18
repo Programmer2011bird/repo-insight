@@ -16,6 +16,10 @@ class CLI:
         self.searchRepoSubparser.add_argument("-q", "-query", type=str, action="store", 
                                               help="Specifies The Search Query", required=True)
 
+        self.searchUserSubparser = self.subparsers.add_parser("searchUser", help="Search For Users")
+        self.searchUserSubparser.add_argument("-q", "-query", type=str, action="store", 
+                                              help="Specifies The Search Query", required=True)
+
         self.ARGS = self.PARSER.parse_args()
 
         if self.ARGS.command == "searchRepo":
@@ -23,14 +27,15 @@ class CLI:
         elif self.ARGS.command == "searchUser":
             self.searchUser()
         elif self.ARGS.command == "getInsights":
-            pass
+            self.getInsights()
     
     def searchRepo(self):
         search_query: str = str(self.ARGS.q)
         self.formatter.repoSearchFormatter(self.API.searchRepo(search_query))
 
     def searchUser(self):
-        pass
+        search_query: str = str(self.ARGS.q)
+        self.formatter.userSearchFormatter(self.API.searchUser(search_query))
 
     def getInsights(self):
         pass

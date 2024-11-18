@@ -67,8 +67,6 @@ class API_HANDLER:
         self.RESPONSE: requests.Response = requests.get(self.ENDPOINT)
         self.JSON_RESPONSE: dict = dict(self.RESPONSE.json())
 
-        print(self.JSON_RESPONSE)
-
         try:
             self.INSIGHTS: dict[str, str] = {
                 "fullName" : self.JSON_RESPONSE["full_name"],

@@ -8,15 +8,32 @@ class CLI:
         self.formatter: formatter.Formatter = formatter.Formatter()
         self.API: main.API_HANDLER = main.API_HANDLER()
         
-        self.PARSER: argparse.ArgumentParser = argparse.ArgumentParser()
-        self.PARSER.add_argument("searchRepo")
-        self.PARSER.add_argument("-Q", "--query", required=True)
-        
+        self.PARSER: argparse.ArgumentParser = argparse.ArgumentParser(description=
+        "CLI Tool For Searching And Getting Insights Of Repositories/Users From Github")
+        self.subparsers = self.PARSER.add_subparsers(title="commands", dest="command", required=True)
+
+        self.searchRepoSubparser = self.subparsers.add_parser("searchRepo", help="Search For Repositories")
+        self.searchRepoSubparser.add_argument("-q", "-query", type=str, action="store", 
+                                              help="Specifies The Search Query", required=True)
+
         self.ARGS = self.PARSER.parse_args()
-        
-        if self.ARGS.searchRepo == "searchRepo":
-            search_query: str = str(self.ARGS.query)
-            self.formatter.repoSearchFormatter(self.API.searchRepo(search_query))
+
+        if self.ARGS.command == "searchRepo":
+            self.searchRepo()
+        elif self.ARGS.command == "searchUser":
+            self.searchUser()
+        elif self.ARGS.command == "getInsights":
+            pass
+    
+    def searchRepo(self):
+        search_query: str = str(self.ARGS.q)
+        self.formatter.repoSearchFormatter(self.API.searchRepo(search_query))
+
+    def searchUser(self):
+        pass
+
+    def getInsights(self):
+        pass
             
 
 if __name__ == "__main__":

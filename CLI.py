@@ -20,6 +20,12 @@ class CLI:
         self.searchUserSubparser.add_argument("-q", "-query", type=str, action="store", 
                                               help="Specifies The Search Query", required=True)
 
+        self.getInsightsSubparser = self.subparsers.add_parser("getInsights", help="Get Information For A Specific Repository")
+        self.getInsightsSubparser.add_argument("-owner", type=str, action="store",
+                                               help="Specifies The Owner Of The Repository", required=True)
+        self.getInsightsSubparser.add_argument("-name", type=str, action="store",
+                                               help="Specifies The Name Of The Repository", required=True)
+
         self.ARGS = self.PARSER.parse_args()
 
         if self.ARGS.command == "searchRepo":
@@ -38,8 +44,9 @@ class CLI:
         self.formatter.userSearchFormatter(self.API.searchUser(search_query))
 
     def getInsights(self):
-        pass
-            
+        repo_owner: str = str(self.ARGS.owner)
+        repo_name: str = str(self.ARGS.name)
+        self.formatter.infoFormatter(self.API.getInfo(repo_owner, repo_name))
 
 if __name__ == "__main__":
     cli: CLI = CLI()
